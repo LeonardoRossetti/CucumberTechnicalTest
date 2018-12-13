@@ -7,11 +7,13 @@ namespace CucumberTechnicalTest.Helper
         /// <summary>
         /// This method receive a decimal value
         /// </summary>
-        /// <returns>The value write in words</returns>
+        /// <returns>The value writed in words</returns>
         public static String ConvertToWords(decimal value)
         {
             if (value <= 0 | value >= 1000000000000000)
+            {
                 return "Value is not supported.";
+            }
             else
             {
                 String strValue = value.ToString("000000000000000.00");
@@ -62,6 +64,7 @@ namespace CucumberTechnicalTest.Helper
                     if (i == 12)
                     {
                         if (value_as_words.Length > 8)
+                        {
                             if (value_as_words.Substring(value_as_words.Length - 6, 6) == "BILLION" | value_as_words.Substring(value_as_words.Length - 6, 6) == "MILLION")
                             {
                                 value_as_words += " ";
@@ -76,6 +79,7 @@ namespace CucumberTechnicalTest.Helper
                             {
                                 value_as_words += " ";
                             }
+                        }
                         if (Convert.ToInt64(strValue.Substring(0, 15)) == 1)
                         {
                             value_as_words += " DOLLAR";
