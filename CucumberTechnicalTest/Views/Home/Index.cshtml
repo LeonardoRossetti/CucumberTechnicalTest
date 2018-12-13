@@ -1,0 +1,47 @@
+﻿@model CucumberTechnicalTest.Models.ConvertModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="content">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <div class="row presentation">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name, new { @placeholder = "Your name goes here" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="row presentation">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Number)
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Number, new { @placeholder = "The number goes here" })
+                @Html.ValidationMessageFor(model => model.Number)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <input type="submit" value="Convert" />
+            </div>
+        </div>
+    }
+
+    @if (Model.Result != null)
+    {
+        <div class="row presentation">
+            <h1>The result is:</h1>
+            <label>@Model.Result.Name</label>
+            <br />
+            <label>@Model.Result.Number</label>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
